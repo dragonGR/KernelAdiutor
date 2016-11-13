@@ -41,7 +41,7 @@ public class StartActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             Fabric.with(this, new Crashlytics());
         }
         Intent intent = new Intent(this, MainActivity.class);

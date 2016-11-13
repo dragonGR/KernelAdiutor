@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // Don't initialize analytics with debug build
-        if (!BuildConfig.DEBUG) {
+        if (BuildConfig.DEBUG) {
             Fabric.with(this, new Crashlytics());
         }
 
@@ -232,7 +232,7 @@ public class MainActivity extends BaseActivity {
             Voltage.supported();
             Wake.supported();
 
-            if (!BuildConfig.DEBUG) {
+            if (BuildConfig.DEBUG) {
                 // Send SoC type to analytics to collect stats
                 Answers.getInstance().logCustom(new CustomEvent("SoC")
                         .putCustomAttribute("type", Device.getBoard()));
@@ -285,7 +285,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
                 finish();
 
-                if (!BuildConfig.DEBUG) {
+                if (BuildConfig.DEBUG) {
                     // Send problem to analytics to collect stats
                     Answers.getInstance().logCustom(new CustomEvent("Can't access")
                             .putCustomAttribute("no_found", mHasRoot ? "no busybox" : "no root"));
